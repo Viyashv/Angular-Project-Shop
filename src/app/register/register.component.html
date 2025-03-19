@@ -1,1 +1,54 @@
-<p>register works!</p>
+<div class="container">
+
+    <div class="row ">
+        <div class="col-md-5 mx-auto border shadow mt-5 border-dark rounded-4">
+            <h3 class="text-center mt-3">Register</h3>
+            <div class="card border-0 p-3">
+                <form>
+                    <!-- Email input -->
+                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
+                      <input type="email" id="useremail" class="form-control" placeholder=""/>
+                      <label class="form-label" for="useremail">Email address</label>
+                    </div>
+                    
+                    <!-- Username input -->
+                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
+                      <input type="text" id="username" class="form-control" placeholder=""/>
+                      <label class="form-label" for="username">Email address</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
+                      <input type="password" id="form2Example2" class="form-control" placeholder=""/>
+                      <label class="form-label" for="form2Example2">Password</label>
+                    </div>
+                    
+                    <!-- Confrim Password input -->
+                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
+                      <input type="password" id="ConfirmPassword" class="form-control" placeholder=""/>
+                      <label class="form-label" for="ConfirmPassword">Confirm Password</label>
+                    </div>
+                  
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4 text-center">                  
+                      <div class="col">
+                        <!-- Simple link -->
+                        <a href="#!">Forgot password?</a>
+                      </div>
+                    </div>
+                  
+                    <!-- Submit button -->
+                     <div class="d-flex justify-content-center">
+                         <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Login</button>
+                    </div>
+                  
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                      <p>Already a user? click <a href="/login"> here </a>to login</p>
+                    </div>
+                  </form>
+            </div>
+        </div>    
+    </div>
+
+</div>
