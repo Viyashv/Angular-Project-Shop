@@ -1,54 +1,62 @@
 <div class="container">
-
-    <div class="row ">
-        <div class="col-md-5 mx-auto border shadow mt-5 border-dark rounded-4">
-            <h3 class="text-center mt-3">Register</h3>
-            <div class="card border-0 p-3">
-                <form>
-                    <!-- Email input -->
-                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="email" id="useremail" class="form-control" placeholder=""/>
-                      <label class="form-label" for="useremail">Email address</label>
-                    </div>
-                    
-                    <!-- Username input -->
-                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="text" id="username" class="form-control" placeholder=""/>
-                      <label class="form-label" for="username">Email address</label>
-                    </div>
-
-                    <!-- Password input -->
-                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="password" id="form2Example2" class="form-control" placeholder=""/>
-                      <label class="form-label" for="form2Example2">Password</label>
-                    </div>
-                    
-                    <!-- Confrim Password input -->
-                    <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="password" id="ConfirmPassword" class="form-control" placeholder=""/>
-                      <label class="form-label" for="ConfirmPassword">Confirm Password</label>
-                    </div>
-                  
-                    <!-- 2 column grid layout for inline styling -->
-                    <div class="row mb-4 text-center">                  
-                      <div class="col">
-                        <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
-                      </div>
-                    </div>
-                  
-                    <!-- Submit button -->
-                     <div class="d-flex justify-content-center">
-                         <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Login</button>
-                    </div>
-                  
-                    <!-- Register buttons -->
-                    <div class="text-center">
-                      <p>Already a user? click <a href="/login"> here </a>to login</p>
-                    </div>
-                  </form>
+  <div class="row">
+    <div class="col-md-5 mx-auto border shadow mt-5 border-dark rounded-4">
+      <h3 class="text-center mt-3">Register</h3>
+      <div class="card border-0 p-3">
+        <form [formGroup]="registerForm">
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="email" id="useremail" class="form-control" placeholder="" formControlName="Email" />
+            <label class="form-label" for="useremail">Email address</label>
+            <!-- {{emailName.errors|json}} -->
+            <div class="alert alert-danger m-0" *ngIf="emailName.touched && emailName.invalid">
+              <span *ngIf="emailName.errors?.['required']">Email is required</span>
+              <span *ngIf="emailName.errors?.['email']">Please enter a valid email address</span>
             </div>
-        </div>    
-    </div>
+          </div>
 
+          <!-- Username input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="text" id="username" class="form-control" placeholder="" formControlName="userName" />
+            <!-- {{userName.errors|json}} -->
+            <label class="form-label" for="username">User Name</label>
+            <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
+              <span *ngIf="userName.errors?.['required']">User name is required</span>
+              <span *ngIf="userName.errors?.['pattern']">User name should only contains alphabets and no special characters</span>
+              <span *ngIf="userName.errors?.['minlength']">User name should be more than 3 characters</span>
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="password" id="password" class="form-control" placeholder="" formControlName="password" />
+            <!-- {{password1.errors|json}} -->
+            <label class="form-label" for="password">Password</label>
+            <div class="alert alert-danger" *ngIf="password1.touched && password1.invalid"><span>Password is required</span></div>
+          </div>
+
+          <!-- Confrim Password input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="password" id="ConfirmPassword" class="form-control" placeholder=""
+              formControlName="confirmPassword" />
+            <!-- {{password2.errors|json}} -->
+            <label class="form-label" for="ConfirmPassword">Confirm Password</label>
+            <div class="alert alert-danger" *ngIf="password2.touched && password2.invalid"><span>Confrim Password is required</span></div>
+          </div>
+          <!-- Submit button -->
+          <div class="d-flex justify-content-center">
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+              (click)="doRegister()">
+              Register
+            </button>
+          </div>
+
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Already a user? click <a href="/login"> here </a>to login</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

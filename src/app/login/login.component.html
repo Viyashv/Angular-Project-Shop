@@ -19,11 +19,12 @@
                   
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="password" id="password" class="form-control" placeholder="" 
+                      <input type="password" id="password" class="form-control" placeholder="" password
                       [(ngModel)] = "Password" name="Password" #passwordImput = 'ngModel' required
                       />
                       <label class="form-label" for="password">Password</label>
                     </div>
+                    <!-- {{passwordImput.errors | json}} -->
                     <div class="alert alert-danger" *ngIf="passwordImput.invalid && passwordImput.touched">
                       <span>
                         Password is compulsory
