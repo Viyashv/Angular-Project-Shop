@@ -6,14 +6,13 @@
                 <form>
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="email" id="useremail" class="form-control" placeholder="" 
-                      [(ngModel)] = "username" name="username" required email
+                      <input type="email" id="username" class="form-control" placeholder="" 
+                      [(ngModel)] = "username" name="username" required
                       #userInPut = 'ngModel'
                       />                      
-                      <label class="form-label" for="useremail">Email address</label>
+                      <label class="form-label" for="username">User Name</label>
                       <div class="alert alert-danger m-0" *ngIf="userInPut.touched && userInPut.invalid">
-                        <span *ngIf="userInPut.errors?.['required']">User Email is compulsory</span>                                               
-                        <span *ngIf="userInPut.errors?.['email']">Please enter valid email address</span>                                               
+                        <span *ngIf="userInPut.errors?.['required']">User Email is compulsory</span>                                             
                       </div>
                     </div>
                   
