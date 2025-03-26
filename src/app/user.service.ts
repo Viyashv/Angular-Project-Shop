@@ -23,4 +23,8 @@ export class UserService {
     }
     
   }
+  userLogout(){
+    this.isLoginIn.set(false);
+    localStorage.removeItem('login');
+  }
 }

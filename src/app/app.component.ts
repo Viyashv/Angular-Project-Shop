@@ -10,7 +10,9 @@ export class AppComponent {
   title = 'my-angular-project';
   name = 'viyash Turkane';
   status = this.service.isLoginIn
+  logoutUser(){
+    this.service.userLogout();
+  }
   constructor(private service:UserService){}
-
 
 }
