@@ -11,8 +11,8 @@ export class ProductService {
     return this.http.get<any>('https://dummyjson.com/products')
   }
 
-  getProductById(id:any):Observable<Product>{
-    return this.http.get<Product>(`http://localhost:3000/products/${id}`)
+  getProductById(id:any):Observable<any>{
+    return this.http.get<any>(`https://dummyjson.com/products/${id}`)
     
   }
   constructor(private http:HttpClient) { 

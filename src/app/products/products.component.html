@@ -9,10 +9,7 @@
                     <p class="card-text">{{ product.category}}</p>
                     <p class="card-text">{{ product.price | currency}}</p>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <button [routerLink]="['/products/' , product.id]" class="btn btn-outline-primary">View Details</button>
-                    <button [routerLink]="['/products/' , product.id]" class="btn btn-outline-primary">Add Cart</button>
-                </div>
+                    <button [routerLink]="['/products/' , product.id]" class="btn btn-primary card-footer">View Details</button>
             </div>
         </div>
     </div>

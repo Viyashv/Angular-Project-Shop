@@ -1,19 +1,20 @@
-<p>product-list works!</p>
+
 <div class="container">
 
     <div class="row">
-        <div class="col-md-3 mt-4" >
-            <div class="card" style="width: 100%;">
-                <img src="..." class="card-img-top" alt="...">
+        <div class="col-md-3 mt-4 d-flex" >
+            <div class="card w-100 h-100 d-flex flex-column shadow">
+                <img [src]="[productDetails.thumbnail]" class="card-img-top" alt="..." loading="lazy">
                 <div class="card-body">
-                    <h5 class="card-title">{{ productDetails.name}}</h5>
-                    <p class="card-text">{{ productDetails.brand}}</p>
-                    <p class="card-text">{{ productDetails.price | currency:'INR'}}</p>
+                    <h5 class="card-title">{{ productDetails.title}}</h5>
+                    <p class="card-text">{{ productDetails.category}}</p>
+                    <p class="card-text">{{ productDetails.price | currency}}</p>
                 </div>
+                <a [routerLink]="['/products/cart', productDetails.id]" class="btn btn-outline-warning card-footer">Add Cart</a>
             </div>
         </div>
     </div>
-    <button (click)="backToProductList()" class="btn btn-primary mt-2 w-100">
+    <button (click)="backToProductList()" class="btn btn-outline-dark mt-5 w-100 shadow">
         <span class="text-center">
             Back to product list
         </span>
