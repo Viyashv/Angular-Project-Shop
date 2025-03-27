@@ -1,4 +1,5 @@
 import { Injectable , signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable , signal } from '@angular/core';
 export class UserService {
  isLoginIn = signal(false);
 
- constructor(){
+ constructor(private router:Router){
   const val = localStorage.getItem('login');
   if (val){
     this.isLoginIn.set(true);
@@ -17,14 +18,11 @@ export class UserService {
     if (username === "admin" && password === "admin123"){
       this.isLoginIn.set(true);
       localStorage.setItem('login','true')
+      this.router.navigate(['']);
     }
     else{
       alert("please enter valid username and password")
     }
     
-  }
-  userLogout(){
-    this.isLoginIn.set(false);
-    localStorage.removeItem('login');
   }
 }

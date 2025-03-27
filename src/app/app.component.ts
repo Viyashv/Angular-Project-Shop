@@ -11,7 +11,8 @@ export class AppComponent {
   name = 'viyash Turkane';
   status = this.service.isLoginIn
   logoutUser(){
-    this.service.userLogout();
+    this.service.isLoginIn.set(false);
+    localStorage.removeItem('login')
   }
   constructor(private service:UserService){}
 

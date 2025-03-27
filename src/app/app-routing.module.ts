@@ -4,10 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'products',component:ProductsComponent},
+  {path:'products/:id',component:ProductListComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent}
 ];
