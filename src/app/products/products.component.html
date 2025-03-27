@@ -1,15 +1,17 @@
-<p>products works!</p>
-<div class="container">
 
+<div class="container">
     <div class="row">
-        <div class="col-md-3 mt-4" *ngFor="let product of products">
-            <div class="card" style="width: 100%;">
-                <img src="..." class="card-img-top" alt="...">
+        <div class="col-md-3 mt-4 d-flex" *ngFor="let product of products.products">
+            <div class="card shadow h-100 w-100 d-flex flex-column" style="width: 100%;">
+                <img [src]="[product.thumbnail]" class="card-img-top" alt="..." loading="lazy"/>
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.name}}</h5>
-                    <p class="card-text">{{ product.brand}}</p>
-                    <p class="card-text">{{ product.price | currency:'INR'}}</p>
-                    <button [routerLink]="['/products/' , product.id]" class="btn btn-primary">View Details</button>
+                    <h5 class="card-title">{{ product.title}}</h5>
+                    <p class="card-text">{{ product.category}}</p>
+                    <p class="card-text">{{ product.price | currency}}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button [routerLink]="['/products/' , product.id]" class="btn btn-outline-primary">View Details</button>
+                    <button [routerLink]="['/products/' , product.id]" class="btn btn-outline-primary">Add Cart</button>
                 </div>
             </div>
         </div>

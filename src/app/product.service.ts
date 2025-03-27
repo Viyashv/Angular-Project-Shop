@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  getAllProducts():Observable<Product[]>{
-    return this.http.get<Product[]>('http://localhost:3000/products')
+  getAllProducts():Observable<any>{
+    return this.http.get<any>('https://dummyjson.com/products')
   }
 
   getProductById(id:any):Observable<Product>{
