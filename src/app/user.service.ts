@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable , signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import { Router } from '@angular/router';
 export class UserService {
  isLoginIn = signal(false);
 
- constructor(private router:Router){
+ constructor(private router:Router , private http:HttpClient){
   const val = localStorage.getItem('login');
   if (val){
     this.isLoginIn.set(true);
@@ -24,5 +26,12 @@ export class UserService {
       alert("please enter valid username and password")
     }
     
+  }
+  userRegister(fullName:any , email:any , password:any){
+    console.log(fullName , email , password);    
+    this.http.post('http://localhost:3000/User',{fullName , email , password}).subscribe(
+      response => console.log('User created:', response),
+      error => console.error('Error:', error)
+    );
   }
 }

@@ -1,34 +1,16 @@
 {
-    "products":[
-        {
-            "id":1,
-            "name":"Product 1",
-            "price":10.99,
-            "brand":"Brand 1"
-        },
-        {
-            "id":2,
-            "name":"Product 2",
-            "price":100.99,
-            "brand":"Brand 2"
-        },
-        {
-            "id":3,
-            "name":"Product 3",
-            "price":50.99,
-            "brand":"Brand 3"
-        },
-        {
-            "id":4,
-            "name":"Product 4",
-            "price":80.99,
-            "brand":"Brand 4"
-        },
-        {
-            "id":5,
-            "name":"Product 5",
-            "price":60.99,
-            "brand":"Brand 5"
-        }
-    ]
+  "User": [
+    {
+      "id": "0079",
+      "fullName": "viyash",
+      "email": "viyashturkane@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "97c5",
+      "fullName": "viyash",
+      "email": "viyashturkane@gmail.com",
+      "password": "123"
+    }
+  ]
 }

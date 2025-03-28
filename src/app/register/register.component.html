@@ -42,10 +42,11 @@
             <!-- {{password2.errors|json}} -->
             <label class="form-label" for="ConfirmPassword">Confirm Password</label>
             <div class="alert alert-danger" *ngIf="password2.touched && password2.invalid"><span>Confrim Password is required</span></div>
+            <div class="alert alert-danger" *ngIf="error()"><span>Password and Confirm Password should be same</span></div>
           </div>
           <!-- Submit button -->
           <div class="d-flex justify-content-center">
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
               (click)="doRegister()">
               Register
             </button>
