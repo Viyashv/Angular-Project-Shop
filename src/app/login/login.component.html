@@ -1,9 +1,10 @@
 <div class="container">
-    <div class="row ">
-        <div class="col-md-3 mx-auto border shadow mt-5 border-dark">
-            <h3 class="text-center mt-3">Login</h3>
-            <div class="card border-0 p-3">
-                <form>
+  <div class="row ">
+    <div class="col-md-3 mx-auto border shadow mt-5 border-dark">
+      <h3 class="text-center mt-3">Login</h3>
+      <div class="card border-0 p-3">
+                  <form #loginForm="ngForm" (ngSubmit)="login()">
+                    <!-- {{ loginForm.invalid | json }} -->
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4 form-floating">
                       <input type="email" id="username" class="form-control" placeholder="" 
@@ -22,12 +23,12 @@
                       [(ngModel)] = "Password" name="Password" #passwordImput = 'ngModel' required
                       />
                       <label class="form-label" for="password">Password</label>
-                    </div>
-                    <!-- {{passwordImput.errors | json}} -->
-                    <div class="alert alert-danger" *ngIf="passwordImput.invalid && passwordImput.touched">
-                      <span>
-                        Password is compulsory
-                      </span>
+                      <!-- {{passwordImput.errors | json}} -->
+                      <div class="alert alert-danger" *ngIf="passwordImput.invalid && passwordImput.touched">
+                        <span>
+                          Password is compulsory
+                        </span>
+                      </div>
                     </div>
                   
                     <!-- 2 column grid layout for inline styling -->
@@ -40,7 +41,8 @@
                   
                     <!-- Submit button -->
                      <div class="d-flex justify-content-center">
-                         <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" (click)="login()">Login</button>
+                         <button  type="submit" data-mdb-button-init data-mdb-ripple-init
+                          class="btn btn-primary btn-block mb-4" [disabled]="loginForm.invalid">Login</button>
                     </div>
                   
                     <!-- Register buttons -->

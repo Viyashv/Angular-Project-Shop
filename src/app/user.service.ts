@@ -23,7 +23,7 @@ export class UserService {
       this.router.navigate(['']);
     }
     else{
-      alert("please enter valid username and password")
+      alert("Username or Password is incorrect")
     }
     
   }
@@ -33,5 +33,6 @@ export class UserService {
       response => console.log('User created:', response),
       error => console.error('Error:', error)
     );
+    this.router.navigate(['/login'])
   }
 }

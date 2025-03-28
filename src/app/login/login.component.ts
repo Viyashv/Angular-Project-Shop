@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { UserService } from './../user.service';
 import { Component } from '@angular/core';
 
@@ -11,7 +12,10 @@ export class LoginComponent {
     Password !: string;
     status = this.service.isLoginIn
     login(){
-      this.service.verifyUserLogin(this.username , this.Password)
+      if(this.username && this.Password){
+        this.service.verifyUserLogin(this.username , this.Password)
+      }
+      console.log('please enter both username and password')
     }
     
     constructor(private service:UserService){}

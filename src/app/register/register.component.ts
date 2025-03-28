@@ -15,7 +15,9 @@ export class RegisterComponent {
           userName: new FormControl('',[Validators.required , Validators.pattern('^[a-zA-Z]+$') , Validators.minLength(3)]),
           password: new FormControl('',Validators.required),
           confirmPassword: new FormControl('',Validators.required)
-        })
+        }
+
+      )
         constructor(private service:UserService){}
         
         
@@ -33,10 +35,11 @@ export class RegisterComponent {
         }
         
         doRegister(){
-          console.log(`password1 : ${this.password1.value} password2 : ${this.password2.value}`);
-          if (this.password1 ==this.password2){
+          // console.log(`password1 : ${this.password1.value} password2 : ${this.password2.value}`);
+          if (this.password1.value == this.password2.value){
+            // console.log(this.password1.value == this.password2.value);
             const {Email , userName, password} = this.registerForm.value;
-            console.log(userName , Email , password);
+            // console.log(userName , Email , password);
             this.service.userRegister(userName , Email , password)
           }
           else{
