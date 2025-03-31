@@ -15,6 +15,14 @@ export class ProductService {
     return this.http.get<any>(`https://dummyjson.com/products/${id}`)
     
   }
+  getAllProductCategory():Observable<any>{
+    return this.http.get<any>('https://dummyjson.com/products/categories')
+  }
+
+  getProductWithCategory(name:any):Observable<any>{
+    return this.http.get<any>(`https://dummyjson.com/products/category/${name}`)
+  }
+
   constructor(private http:HttpClient) { 
     
   }

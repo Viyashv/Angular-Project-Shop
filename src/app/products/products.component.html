@@ -1,7 +1,26 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3 mt-4 d-flex" *ngFor="let product of products.products">
+        <div class="d-flex justify-content-between mt-3 mb-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Category
+                </button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let data of category"><button class="dropdown-item" (click)="getProductByCategory(data.slug)">{{data.name}}</button></li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort by
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" (click)="sortProductsByPrices('desc')">High to Low</button></li>
+                  <li><button class="dropdown-item" (click)="sortProductsByPrices('asc')">Low to High</button></li>
+                </ul>
+              </div>
+        </div>
+        <div class="col-md-3 mt-4 d-flex" *ngFor="let product of sortedProducts">
             <div class="card shadow h-100 w-100 d-flex flex-column" style="width: 100%;">
                 <img [src]="[product.thumbnail]" class="card-img-top" alt="..." loading="lazy"/>
                 <div class="card-body">

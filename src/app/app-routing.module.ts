@@ -15,6 +15,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'products/cart/:id',component:CartComponent , canActivate:[loginrequiredGuard]},
+  {path:'myCart' , component:CartComponent , canActivate:[loginrequiredGuard]}
 ];
 
 @NgModule({
