@@ -1,26 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../product-model';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import { retry } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit , OnDestroy {
-products !:any;
+export class ProductsComponent implements OnInit{
+productsData !:any;
 category !:any;
 sortedProducts !:any;
+page :number = 1;
+itemsPerPage :number = 10
 
-constructor(private service:ProductService){}
+constructor(private service:ProductService,private router:Router) { }
+
 ngOnInit(): void {
-  this.service.getAllProducts().subscribe(data =>{ this.products = data.products; this.sortedProducts = data.products; });
+  this.service.getAllProducts().subscribe(data =>{this.productsData = data.products; 
+                                                  this.sortedProducts = data.products; 
+                                                  console.log(this.productsData.length);
+                                                  });
   this.service.getAllProductCategory().subscribe(data => this.category = data)
+  
 }
 getProductByCategory(name:any){
 // console.log(`Category : ${name}`);
-this.service.getProductWithCategory(name).subscribe(data => this.sortedProducts = data.products)
+if (name == 'all'){this.sortedProducts = this.productsData; this.page = 0}
+else{this.service.getProductWithCategory(name).subscribe(data => {this.sortedProducts = data.products; this.page = 0})}
 }
 
 sortProductsByPrices(SortingType:any) {
@@ -29,9 +36,8 @@ sortProductsByPrices(SortingType:any) {
   else { data.sort((a:any, b:any) => b.price - a.price) }
   this.sortedProducts = data;
 }
-ngOnDestroy(): void {
-
-  return ;
+backToProductList(){
+this.router.navigate(['/products'])
 }
 
 }

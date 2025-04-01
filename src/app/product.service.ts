@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   getAllProducts():Observable<any>{
-    return this.http.get<any>('https://dummyjson.com/products')
+    return this.http.get<any>('https://dummyjson.com/products?limit=0')
   }
 
   getProductById(id:any):Observable<any>{
