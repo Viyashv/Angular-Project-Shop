@@ -22,6 +22,9 @@ export class ProductService {
   getProductWithCategory(name:any):Observable<any>{
     return this.http.get<any>(`https://dummyjson.com/products/category/${name}`)
   }
+  getProductBySearch(name:any):Observable<any>{
+    return this.http.get<any>(`https://dummyjson.com/products/search?q=${name}&limit=0`)
+  }
 
   constructor(private http:HttpClient) { 
     

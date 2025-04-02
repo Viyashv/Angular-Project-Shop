@@ -11,7 +11,10 @@ export class LoginComponent {
     username !: string;
     Password !: string;
     status = this.service.isLoginIn
+
     login(){
+      // console.log(this.username , this.Password);
+      
       if(this.username && this.Password){
         this.service.verifyUserLogin(this.username , this.Password)
       }

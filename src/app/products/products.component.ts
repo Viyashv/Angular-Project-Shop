@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit{
-productsData !:any;
+productsData !: any;
 category !:any;
 sortedProducts !:any;
 page :number = 1;
@@ -18,9 +18,7 @@ constructor(private service:ProductService,private router:Router) { }
 
 ngOnInit(): void {
   this.service.getAllProducts().subscribe(data =>{this.productsData = data.products; 
-                                                  this.sortedProducts = data.products; 
-                                                  console.log(this.productsData.length);
-                                                  });
+                                                  this.sortedProducts = data.products;});
   this.service.getAllProductCategory().subscribe(data => this.category = data)
   
 }

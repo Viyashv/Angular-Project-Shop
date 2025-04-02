@@ -1,0 +1,21 @@
+<h2 class="text-center">search-product works!</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mt-4 d-flex" *ngFor="let product of products | paginate :{itemsPerPage: itemsPerPage, currentPage: page}">
+            <div class="card shadow h-100 w-100 d-flex flex-column" style="width: 100%;">
+                <img [src]="[product.thumbnail]" class="card-img-top" alt="..." loading="lazy"/>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title}}</h5>
+                    <strong class="card-text">{{ product.category}}</strong>
+                    <p class="card-description">{{ product.description | slice:0:50 }}...</p>
+                    <p class="card-text">{{ product.price | currency}}</p>
+                </div>
+                    <button [routerLink]="['/products/' , product.id]" class="btn btn-primary card-footer">View Details</button>
+            </div>
+        </div>
+        <!-- Pagination Controls -->
+         <div class="d-flex justify-content-center shadow my-4">
+           <pagination-controls (pageChange)="page = $event"></pagination-controls>
+         </div>
+      </div>
+</div>

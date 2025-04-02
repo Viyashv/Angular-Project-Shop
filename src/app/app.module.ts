@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     ProductsComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,

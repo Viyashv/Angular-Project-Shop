@@ -32,11 +32,83 @@
         </li>
 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-success" type="submit">Search</button>
-      </form>
+      <!-- Search Bar -->
+       <div class="d-flex flex-column">
+         <form class="d-flex" role="search" (ngSubmit)="searchInput()" #formVaild = 'ngForm'>
+           <input class="form-control me-2" name="search" [(ngModel)]="search" 
+           type="search" placeholder="Search" aria-label="Search" 
+           required  #searchQuery = 'ngModel' />
+           <button class="btn btn-success" type="submit" [disabled]="formVaild.invalid">Search</button>
+          </form>
+        </div>
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+<div class="container-fluid bg-info">
+  <footer class="py-5 mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-3">
+        <form #loginForm="ngForm" (ngSubmit)="submit()">
+          <!-- {{ loginForm.invalid | json }} -->
+            <h5 class="text-center mb-5">FeedBack Form</h5>
+          <!-- UserName input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="email" id="username" class="form-control" placeholder="" [(ngModel)] = "username" name="username" required
+            #userInPut = 'ngModel'
+            />                      
+            <label class="form-label" for="username">User Name</label>
+            <div class="alert alert-danger m-0" *ngIf="userInPut.touched && userInPut.invalid">
+              <span *ngIf="userInPut.errors?.['required']">User name is compulsory</span>                                             
+            </div>
+          </div>
+          <!-- Email Input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <input type="email" id="username" class="form-control" placeholder="" 
+            [(ngModel)] = "email" name="email" required
+            #emailInPut = 'ngModel'
+            />                      
+            <label class="form-label" for="username">Email</label>
+            <div class="alert alert-danger m-0" *ngIf="emailInPut.touched && emailInPut.invalid">
+              <span *ngIf="emailInPut.errors?.['required']">Email is compulsory</span>                                             
+            </div>
+          </div>
+        
+          <!-- FeedBack field input -->
+          <div data-mdb-input-init class="form-outline mb-4 form-floating">
+            <textarea type="password" id="feeedback" class="form-control" 
+              placeholder="" [(ngModel)] = "feedback" name="feedback"
+               #feedBackImput = 'ngModel' required maxlength="500" minlength="20">
+            </textarea>
+            <label class="form-label" for="feeedback">FeedBack</label>
+            <!-- {{feedBackImput.errors | json}} -->
+            <div class="alert alert-danger" *ngIf="feedBackImput.invalid && feedBackImput.touched">
+              <span *ngIf="feedBackImput.errors?.['required']">FeedBack field is compulsory</span>
+              <span *ngIf="feedBackImput.errors?.['maxlength']">
+                FeedBack field should not be more than 500 characters
+              </span>
+              <span *ngIf="feedBackImput.errors?.['minlength']">
+                FeedBack field should be at least 20 characters long
+              </span>
+            </div>
+          </div>
+        
+          <!-- Submit button -->
+           <div class="d-flex justify-content-center">
+               <button  type="submit" data-mdb-button-init data-mdb-ripple-init
+                class="btn btn-primary btn-block mb-4" [disabled]="loginForm.invalid">Submit FeedBack</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© 2024 Company, Inc. All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram fs-3"></i></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-facebook fs-3"></i></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-twitter fs-3"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>

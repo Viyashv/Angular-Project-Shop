@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
 import { loginrequiredGuard } from './loginrequired.guard';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'products/cart/:id',component:CartComponent , canActivate:[loginrequiredGuard]},
-  {path:'myCart' , component:CartComponent , canActivate:[loginrequiredGuard]}
+  {path:'myCart' , component:CartComponent , canActivate:[loginrequiredGuard]},
+  {path:'search/:name' , component:SearchProductComponent}
 ];
 
 @NgModule({

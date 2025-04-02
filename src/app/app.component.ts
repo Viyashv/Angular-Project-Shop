@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
+import { ProductListComponent } from './product-list/product-list.component';
+import { SearchProductComponent } from './search-product/search-product.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +10,26 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-angular-project';
-  name = 'viyash Turkane';
+  search !:string;
+  username !:string;
+  email !:string;
+  feedback !: string;
+  
+  searchInput(){
+    console.log(`Search : ${this.search}`);
+    this.router.navigate([`/search/${this.search}`])
+  }
+  
   status = this.service.isLoginIn
   logoutUser(){
     this.service.isLoginIn.set(false);
     localStorage.removeItem('login')
   }
-  constructor(private service:UserService){}
+  submit(){
+    console.log(`UserName : ${this.username} Email : ${this.email} Feedback : ${this.feedback}`);
+    alert(`Your feedback has been submitted ${this.username}`)
+    
+  }
+  constructor(private service:UserService , private router:Router) { }
 
 }

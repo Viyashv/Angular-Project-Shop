@@ -26,7 +26,8 @@
                 <img [src]="[product.thumbnail]" class="card-img-top" alt="..." loading="lazy"/>
                 <div class="card-body">
                     <h5 class="card-title">{{ product.title}}</h5>
-                    <p class="card-text">{{ product.category}}</p>
+                    <strong class="card-text">{{ product.category}}</strong>
+                    <p class="card-description">{{ product.description | slice:0:50 }}...</p>
                     <p class="card-text">{{ product.price | currency}}</p>
                 </div>
                     <button [routerLink]="['/products/' , product.id]" class="btn btn-primary card-footer">View Details</button>
