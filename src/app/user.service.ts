@@ -28,7 +28,7 @@ export class UserService {
     
   }
   userRegister(fullName:any , email:any , password:any){
-    console.log(fullName , email , password);    
+    console.log(fullName , email , password); 
     this.http.post('http://localhost:3000/User',{fullName , email , password}).subscribe(
       response => console.log('User created:', response),
       error => console.error('Error:', error)

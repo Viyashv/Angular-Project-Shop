@@ -45,11 +45,12 @@
   </div>
 </nav>
   <router-outlet></router-outlet>
+  
 <div class="container-fluid bg-info">
   <footer class="py-5 mt-4">
     <div class="row justify-content-center">
       <div class="col-md-3 mb-3">
-        <form #loginForm="ngForm" (ngSubmit)="submit()">
+        <form #Form="ngForm" (ngSubmit)="submit(Form)">
           <!-- {{ loginForm.invalid | json }} -->
             <h5 class="text-center mb-5">FeedBack Form</h5>
           <!-- UserName input -->
@@ -95,8 +96,7 @@
         
           <!-- Submit button -->
            <div class="d-flex justify-content-center">
-               <button  type="submit" data-mdb-button-init data-mdb-ripple-init
-                class="btn btn-primary btn-block mb-4" [disabled]="loginForm.invalid">Submit FeedBack</button>
+               <button  type="submit" class="btn btn-primary btn-block mb-4" [disabled]="Form.invalid">Submit FeedBack</button>
           </div>
         </form>
       </div>

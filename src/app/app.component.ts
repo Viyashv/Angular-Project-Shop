@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
-import { ProductListComponent } from './product-list/product-list.component';
-import { SearchProductComponent } from './search-product/search-product.component';
 import { Router } from '@angular/router';
+import { FeedbackService } from './feedback.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +25,10 @@ export class AppComponent {
     this.service.isLoginIn.set(false);
     localStorage.removeItem('login')
   }
-  submit(){
-    console.log(`UserName : ${this.username} Email : ${this.email} Feedback : ${this.feedback}`);
-    alert(`Your feedback has been submitted ${this.username}`)
-    
+  submit(form:NgForm){
+    this.feedbackservice.feedBackSubmit(this.username , this.email , this.feedback)
+    .subscribe(data =>{alert("Feedback is successfully submitted"),form.reset()})
   }
-  constructor(private service:UserService , private router:Router) { }
+  constructor(private service:UserService , private router:Router,private feedbackservice:FeedbackService) { }
 
 }
