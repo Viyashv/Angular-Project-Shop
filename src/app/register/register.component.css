@@ -1,3 +1,8 @@
 .ng-touched.ng-invalid:not(form){
     border: solid red 2px;
 }
+
+.shadow-none:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }

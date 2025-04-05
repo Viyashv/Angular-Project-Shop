@@ -10,6 +10,11 @@ import { flatMap } from 'rxjs';
 })
 export class RegisterComponent {
   error = signal(false)
+  pass1:boolean = true;
+  pass2:boolean = true;
+  hideShowpass1(){ this.pass1 = !this.pass1 }
+  hideShowpass2(){ this.pass2 = !this.pass2 }
+  
         registerForm = new FormGroup({
           Email: new FormControl('',[Validators.required , Validators.email]),
           userName: new FormControl('',[Validators.required , Validators.pattern('^[a-zA-Z]+$') , Validators.minLength(3)]),

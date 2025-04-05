@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 mx-auto border shadow mt-5 border-dark rounded-4">
+    <div class="col-md-4 mx-auto border shadow mt-5 border-dark rounded-4">
       <h3 class="text-center mt-3">Register</h3>
       <div class="card border-0 p-3">
-        <form [formGroup]="registerForm" (ngSubmit)="doRegister()" >
+        <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
           <!-- Email input -->
           <div data-mdb-input-init class="form-outline mb-4 form-floating">
             <input type="email" id="useremail" class="form-control" placeholder="" formControlName="Email" />
@@ -22,33 +22,47 @@
             <label class="form-label" for="username">User Name</label>
             <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
               <span *ngIf="userName.errors?.['required']">User name is required</span>
-              <span *ngIf="userName.errors?.['pattern']">User name should only contains alphabets and no special characters</span>
+              <span *ngIf="userName.errors?.['pattern']">User name should only contains alphabets and no special
+                characters</span>
               <span *ngIf="userName.errors?.['minlength']">User name should be more than 3 characters</span>
             </div>
           </div>
 
           <!-- Password input -->
-          <div data-mdb-input-init class="form-outline mb-4 form-floating">
-            <input type="password" id="password" class="form-control" placeholder="" formControlName="password" />
-            <i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i>
-            <!-- {{password1.errors|json}} -->
-            <label class="form-label" for="password">Password</label>
-            <div class="alert alert-danger" *ngIf="password1.touched && password1.invalid"><span>Password is required</span></div>
+          <div class="mb-4">
+            <div class="d-flex form-floating align-items-center border border-1 rounded-3">
+              <input [type]="pass1 ? 'password' : 'text'" id="password" class="form-control border-0 shadow-none"
+                placeholder="" formControlName="password" />
+              <i class="p-2" [ngClass]="pass1 ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="hideShowpass1()"
+                style="cursor: pointer;"></i>
+              <label class="form-label" for="password">Password</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="password1.touched && password1.invalid">
+              <span>Password is required</span>
+            </div>
           </div>
 
           <!-- Confrim Password input -->
-          <div data-mdb-input-init class="form-outline mb-4 form-floating">
-            <input type="password" id="ConfirmPassword" class="form-control" placeholder=""
-              formControlName="confirmPassword" />
-            <!-- {{password2.errors|json}} -->
-            <label class="form-label" for="ConfirmPassword">Confirm Password</label>
-            <div class="alert alert-danger m-0" *ngIf="password2.touched && password2.invalid"><span>Confrim Password is required</span></div>
-            <div class="alert alert-danger m-0" *ngIf="error()"><span>Password and Confirm Password should be same</span></div>
+          <div class="mb-4">
+            <div data-mdb-input-init
+              class="form-outline form-floating d-flex align-items-center border-1 border rounded-3">
+              <input [type]="pass2? 'password':'text'" id="ConfirmPassword" class="form-control border-0 shadow-none"
+                placeholder="" formControlName="confirmPassword" />
+              <i class="p-2" [ngClass]="pass2 ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="hideShowpass2()"
+                style="cursor: pointer;"></i>
+              <!-- {{password2.errors|json}} -->
+              <label class="form-label" for="ConfirmPassword">Confirm Password</label>
+            </div>
+            <div class="alert alert-danger m-0" *ngIf="password2.touched && password2.invalid"><span>Confrim Password is
+                required</span></div>
+            <div class="alert alert-danger m-0" *ngIf="error()"><span>Password and Confirm Password should be
+                same</span></div>
           </div>
+
           <!-- Submit button -->
           <div class="d-flex justify-content-center">
-            <button type="submit" data-mdb-button-init data-mdb-ripple-init 
-              class="btn btn-primary btn-block mb-4" [disabled]="registerForm.invalid">
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+              [disabled]="registerForm.invalid">
               Register
             </button>
           </div>
