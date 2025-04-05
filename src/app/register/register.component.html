@@ -30,6 +30,7 @@
           <!-- Password input -->
           <div data-mdb-input-init class="form-outline mb-4 form-floating">
             <input type="password" id="password" class="form-control" placeholder="" formControlName="password" />
+            <i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i>
             <!-- {{password1.errors|json}} -->
             <label class="form-label" for="password">Password</label>
             <div class="alert alert-danger" *ngIf="password1.touched && password1.invalid"><span>Password is required</span></div>

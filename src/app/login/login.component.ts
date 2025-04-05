@@ -10,16 +10,18 @@ import { Component } from '@angular/core';
 export class LoginComponent {
     username !: string;
     Password !: string;
-    status = this.service.isLoginIn
-
+    status = this.service.isLoginIn;
+    changeType:boolean = true;
+    hideShowPassword(){
+      this.changeType = !this.changeType
+    }
     login(){
-      // console.log(this.username , this.Password);
+      // console.log(this.username , this.Password)
       
       if(this.username && this.Password){
         this.service.verifyUserLogin(this.username , this.Password)
       }
       console.log('please enter both username and password')
     }
-    
     constructor(private service:UserService){}
 }

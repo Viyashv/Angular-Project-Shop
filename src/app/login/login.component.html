@@ -19,9 +19,9 @@
                   
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-4 form-floating">
-                      <input type="password" id="password" class="form-control" placeholder="" password
+                      <input  id="password" class="form-control" placeholder="" password
                       [(ngModel)] = "Password" name="Password" #passwordImput = 'ngModel' required
-                      />
+                       [type]="changeType?'password':'text'"/>
                       <label class="form-label" for="password">Password</label>
                       <!-- {{passwordImput.errors | json}} -->
                       <div class="alert alert-danger" *ngIf="passwordImput.invalid && passwordImput.touched">
@@ -30,6 +30,16 @@
                         </span>
                       </div>
                     </div>
+
+                    <div class="mb-3 form-check" *ngIf="changeType">
+                      <input type="checkbox" class="form-check-input" id="check" (click)="hideShowPassword()">
+                      <label class="form-check-label" for="check">Show Password</label>
+                    </div>
+                    <div class="mb-3 form-check" *ngIf="!changeType">
+                      <input type="checkbox" class="form-check-input" id="check" (click)="hideShowPassword()">
+                      <label class="form-check-label" for="check">Hide Password</label>
+                    </div>
+                    
                   
                     <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4 text-center">                  

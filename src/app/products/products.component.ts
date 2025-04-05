@@ -12,7 +12,7 @@ productsData !: any;
 category !:any;
 sortedProducts !:any;
 page :number = 1;
-itemsPerPage :number = 10
+itemsPerPage :number = 20
 
 constructor(private service:ProductService,private router:Router) { }
 
